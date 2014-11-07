@@ -1,0 +1,5 @@
+config.c
+sedscript
+Makefile
+Makefile.pre
+Makefile.pre.in

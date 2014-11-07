@@ -1,0 +1,11 @@
+serve.log
+gadfly
+Data.fs
+Data.fs.index
+Data.fs.lock
+Data.fs.tmp
+Z2.log
+Z2.pid
+zProcessManager.pid
+pcgi.*
+*.py

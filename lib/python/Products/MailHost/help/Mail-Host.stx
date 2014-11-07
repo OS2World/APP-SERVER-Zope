@@ -1,0 +1,7 @@
+MailHost: Sends mail through an SMTP server.
+  
+  MailHosts allow you to send mail via the Simple Mail Transfer
+  Protocol (SMTP).
+
+  This object can be used by the <dtml-sendmail> tag to handle
+  delivery of mail.

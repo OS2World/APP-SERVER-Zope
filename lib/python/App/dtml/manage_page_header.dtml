@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+
+<dtml-if "REQUEST.get('management_page_charset')">
+    <dtml-comment>
+    A page-specific encoding specification. Good.
+    </dtml-comment>
+<dtml-elif management_page_charset>
+    <dtml-comment>
+    A site-global encoding specification in a property.
+    Note that this feature only works if there are no unicode objects
+    around. This means that this feature is not likely to be supported
+    in all future versions of zope.
+    </dtml-comment>
+    <dtml-call "REQUEST.set('management_page_charset',_['management_page_charset'])">
+<dtml-else>
+    <dtml-comment>
+    No encoding specification. Most pages are like this.
+    </dtml-comment>
+    <dtml-call "REQUEST.set('management_page_charset','iso-8859-1')">
+</dtml-if>
+
+<meta http-equiv="content-type" content="text/html;charset=<dtml-var "REQUEST['management_page_charset']">">
+<dtml-call "RESPONSE.setHeader('content-type','text/html;charset='+REQUEST['management_page_charset'])">
+
+<title><dtml-if title>&dtml-title;</dtml-if></title>
+<dtml-let ag="REQUEST.get('HTTP_USER_AGENT', '')"
+     is_nav4="ag[:9] == 'Mozilla/4' and _.string.find(ag, 'MSIE') < 0"
+     use_css="REQUEST.get('zmi_use_css', '1')"
+     zmi_embedded_css="1">
+<dtml-if use_css>
+<dtml-if is_nav4>
+<style type="text/css">
+<!--
+
+<dtml-var manage_page_style.css>
+
+-->
+</style>
+<dtml-else>
+<link rel="stylesheet" type="text/css" href="<dtml-var 
+ BASEPATH1>/manage_page_style.css">
+</dtml-if>
+</dtml-if>
+</dtml-let>
+
+</head>
+<body bgcolor="#ffffff" link="#000099" alink="#000099" vlink="#000099">
